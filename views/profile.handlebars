@@ -10,11 +10,11 @@
 
     <form class="form new-blog-form">
       <div class="form-group">
-        <label for="blog-name">tech-blog name:</label>
+        <label for="blog-name">Tech-blog name:</label>
         <input class="form-input" type="text" id="blog-name" name="blog-name" />
       </div>
       <div class="form-group">
-        <label for="blog-desc">description:</label>
+        <label for="blog-desc">Description:</label>
         <textarea class="form-input" id="blog-desc" name="blog-desc"></textarea>
       </div>
       <div class="form-group">
@@ -33,8 +33,8 @@
         <h4><a href="/blog/{{blog.id}}">{{blog.name}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
         <button class="btn btn-sm btn-success" data-id="{{blog.id}}">UPDATE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}

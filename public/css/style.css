@@ -17,4 +17,18 @@ header, .blog:not(:last-child) {
   text-decoration: underline;
 }
 
+.comment-below {
+  margin-top: 50px;
+}
 
+.comment-text {
+  width: 500px;
+  height: 100px;
+  text-indent: 10px;
+  margin-bottom: 20px;
+}
+
+.login-link, .logout-link {
+  margin-left: -150px;
+  font-size: 30px;
+}
