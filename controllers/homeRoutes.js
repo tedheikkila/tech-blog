@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
 
         {
           model: Comment,
-          attributes: ['name'],
         }
       ],
     });
@@ -42,7 +41,6 @@ router.get('/blog/:id', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['name'],
         }
       ],
     });
@@ -58,14 +56,6 @@ router.get('/blog/:id', async (req, res) => {
   }
 });
 
-router.get('/signup', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('signup');
-});
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
@@ -77,8 +67,8 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+// Use withAuth middleware to prevent access to route; add withAuth later
+router.get('/dashboard', async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
@@ -88,7 +78,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {
+    res.render('dashboard', {
       ...user,
       logged_in: true
     });
