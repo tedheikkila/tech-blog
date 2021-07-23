@@ -68,6 +68,7 @@ router.get('/login', (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route; add withAuth later
+
 router.get('/dashboard', async (req, res) => {
   try {
     // Find the logged in user based on the session ID

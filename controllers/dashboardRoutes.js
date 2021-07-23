@@ -13,8 +13,6 @@ router.get('/', withAuth, async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
-
         },
 
         {
@@ -75,7 +73,6 @@ router.get('/create', withAuth, async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
         },
         {
           model: Comment,
