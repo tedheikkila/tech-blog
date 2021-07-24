@@ -2,19 +2,36 @@ header, .blog:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
+#nav-header {
+  height: 130px;
+}
+
+#tech-blog-title {
+  margin-bottom: -30px;
+}
+
+a {
+  color: blue
+}
+
+a:hover {
+  color:blue
+}
+
+button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .no-button {
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: blue;
   text-decoration: none;
-  font-size: 100%;
-}
-
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
+  font-size: 30px;
+  margin-left: -150px;
 }
 
 .comment-below {
@@ -32,3 +49,32 @@ header, .blog:not(:last-child) {
   margin-left: -150px;
   font-size: 30px;
 }
+
+.dashboard-link {
+  font-size: 30px;
+  margin-left: -400px;
+}
+
+#update-btn, #delete-btn {
+  margin: 3%;
+}
+
+#update-btn {
+  background-color: green;
+  color: white
+}
+
+#delete-btn {
+  background-color: red;
+  color: white
+}
+
+#create-btn, #submit-button, #login-submit, #signup-submit {
+  background-color: blue;
+  color: white
+}
+
+.comment-message {
+  margin-top: 100px;
+}
+

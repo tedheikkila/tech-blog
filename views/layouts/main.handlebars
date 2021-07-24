@@ -11,17 +11,16 @@
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+    <header class="display-flex justify-space-between align-center p-2" id="nav-header">
       <h1>
         <span role="img" aria-label="tech">&#9998;</span>
-        <a href="/">Tech Blog</a>
+        <a href="/" id="tech-blog-title">Tech Blog</a>
       </h1>
       <nav class="navbar mt-2">
         <!-- Conditionally render profile, login, logout links -->
         {{#if logged_in}}
-        <a href="/dashboard" class="navbar-item is-hoverable pt-1">Dashboard</a>
-        <a href="/dashboard/create/" class="navbar-item is-hoverable pt-1 mr-4">Create blog</a>
         <button class="no-button" id="logout" class="logout-link">Log Out</button>
+        <a href="/dashboard" class="dashboard-link">Dashboard</a>
         {{else}}
         <a href="/login" class="login-link">Log In</a>
         {{/if}}
