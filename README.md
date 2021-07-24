@@ -20,7 +20,7 @@ creates user profile. captures blog and comment events
   
   Technologies used: VSC, Javascript, Node, MySQL, mysql2, sequelize, express, dotenv, etc (all relevent MVC npm packages; see package.json file for complete list).
 
-  * To see the app in action, check out the deployed app on Heroku here >> 
+  * To see the app in action, check out the deployed app on Heroku here >> https://aqueous-taiga-82354.herokuapp.com/
 
 
   ## Installation
