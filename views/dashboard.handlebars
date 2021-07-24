@@ -15,7 +15,7 @@
       </div>
       <div class="form-group">
         <label for="blog-desc">Description:</label>
-        <textarea class="form-input" id="blog-desc" name="blog-desc"></textarea>
+        <textarea class="form-input" id="blog-description" name="blog-description"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary" id="create-btn">Create</button>
@@ -33,8 +33,8 @@
         <h4><a href="/blog/{{blog.id}}" class="dashboard-blogs">{{blog.name}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-success" id="update-btn" data-id="{{blog.id}}">UPDATE</button>
-        <button class="btn btn-sm btn-danger" id="delete-btn" data-id="{{blog.id}}">DELETE</button>
+        <button class="btn btn-sm btn-success" id="update-blog-btn" data-id="{{blog.id}}">UPDATE</button>
+        <button class="btn btn-sm btn-danger" id="delete-blog-btn" data-id="{{blog.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}

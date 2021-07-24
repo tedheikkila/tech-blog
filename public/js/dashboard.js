@@ -3,10 +3,10 @@
 async function createBlog(event) {
   event.preventDefault();
 
-  const name = document.querySelector('input[name="blog-name"]').value;
-  const description = document.querySelector('input[name="blog-description"]').value;
+  const name = document.querySelector('input[name="blog-name"]').value.trim();
+  const description = document.querySelector('input[name="blog-description"]').value.trim();
 
-  const response = await fetch(`/api/posts`, {
+  const response = await fetch(`/api/blogs`, {
     method: 'POST',
     body: JSON.stringify({
       name,
@@ -24,20 +24,21 @@ async function createBlog(event) {
   }
 }
 
-// edit/update/put blog function
-
 document.querySelector('.new-blog-form').addEventListener('submit', createBlog);
+
+
+// edit/update/put blog function
 
 async function editBlog(event) {
   event.preventDefault();
 
   const name = document.querySelector('input[name="blog-name"]').value;
-  const description = document.querySelector('input[name="blog-content"]').value;
+  const description = document.querySelector('input[name="blog-description"]').value;
   const id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
     ];
 
-  const response = await fetch(`/api/posts/${id}`, {
+  const response = await fetch(`/api/blogs/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
           name,
@@ -55,7 +56,7 @@ async function editBlog(event) {
     }
 }
 
-document.querySelector('.edit-blog-form').addEventListener('submit', editBlog);
+document.querySelector('#update-blog-btn').addEventListener('click', editBlog);
 
 
 // delete/destroy blog function
@@ -67,7 +68,7 @@ async function deleteBlog(event) {
       window.location.toString().split('/').length - 1
     ];
 
-  const response = await fetch(`/api/posts/${id}`, {
+  const response = await fetch(`/api/blogs/${id}`, {
       method: 'DELETE',
       body: JSON.stringify({
         blog_id: id
@@ -78,11 +79,11 @@ async function deleteBlog(event) {
     });
     
     if (response.ok) {
-      document.location.replace('/dashboard/');
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }
   
 }
 
-document.querySelector('.delete-blog-btn').addEventListener('click', deleteBlog);
+document.querySelector('#delete-blog-btn').addEventListener('click', deleteBlog);

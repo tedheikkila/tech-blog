@@ -17,8 +17,8 @@ const hbs = exphbs.create({ helpers });
 const sess = {
   secret: 'secret',
   cookie: {
-    // 10 min seshes (min to sec to millisec)
-    expires: 10 * 60 * 1000
+    // 20 min seshes (min to sec to millisec)
+    expires: 10 * 60 * 2000
   },
   resave: false,
   saveUninitialized: true,

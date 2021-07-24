@@ -50,16 +50,16 @@ button:hover {
   margin-left: -400px;
 }
 
-#update-btn, #delete-btn {
+#update-blog-btn, #delete-blog-btn {
   margin: 3%;
 }
 
-#update-btn {
+#update-blog-btn {
   background-color: green;
   color: white
 }
 
-#delete-btn {
+#delete-blog-btn {
   background-color: red;
   color: white
 }
