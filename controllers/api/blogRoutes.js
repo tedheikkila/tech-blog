@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const blogData = await Blog.findByPk(req.params.id, {
+    await Blog.findByPk(req.params.id, {
       where: {
         id: req.params.id
       },
@@ -92,6 +92,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     await Blog.destroy({
       where: {
         id: req.params.id,
+        user_id: req.session.user_id,
       },
     })
     
