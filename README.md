@@ -20,7 +20,7 @@ creates user profile. captures blog and comment events
   
   Technologies used: VSC, Javascript, Node, MySQL, mysql2, sequelize, express, dotenv, etc (all relevent MVC npm packages; see package.json file for complete list).
 
-  * To see the app in action, check out the deployed app on Heroku here >> https://guarded-woodland-58310.herokuapp.com/
+  * To see the app in action, check out the deployed app on Heroku here >> https://ancient-savannah-26917.herokuapp.com/
 
 
   ## Installation
