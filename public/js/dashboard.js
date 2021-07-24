@@ -11,8 +11,9 @@ async function createBlog(event) {
 
   if (name && description) {
 
-    const response = await fetch(`/api/blog`, {
+    const response = await fetch(`/api/blogs`, {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({
         name,
         description
@@ -47,8 +48,9 @@ async function editBlog(event) {
   //     window.location.toString().split('/').length - 1
   //   ];
 
-  const response = await fetch(`/api/blog/${id}`, {
+  const response = await fetch(`/api/blogs/${id}`, {
     method: 'PUT',
+    credentials: 'include',
     body: JSON.stringify({
       name,
       description
@@ -59,7 +61,7 @@ async function editBlog(event) {
   });
 
   if (response.ok) {
-    document.location.replace('/dashboard/');
+    document.location.replace('/dashboard');
   } else {
     alert(response.statusText);
   }
@@ -77,18 +79,18 @@ async function deleteBlog(event) {
     const id = event.target.getAttribute('data-id');
 
     const response = await fetch(`/api/blog/${id}`, {
+      credentials: 'include',
       method: 'DELETE',
     });
 
     if (response.ok) {
       document.location.replace('/dashboard');
-    } else {
+    } 
+    
+    else {
       alert('Failed to delete blog');
     }
   }
-
-
-
 }
 
 document.querySelector('#delete-blog-btn').addEventListener('click', deleteBlog);

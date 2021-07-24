@@ -10,6 +10,7 @@ async function commentFormHandler(event) {
     if (commentDescription) {
         const response = await fetch('/api/comments', {
           method: 'POST',
+          credentials: 'include',
           body: JSON.stringify({
             blog_id,
             commentDescription
