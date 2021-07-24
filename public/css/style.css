@@ -64,7 +64,7 @@ button:hover {
   color: white
 }
 
-#create-btn, #submit-button, #login-submit, #signup-submit {
+#create-btn, #submit-button, #login-submit, #signup-submit, #submit-comment {
   background-color: blue;
   color: white
 }
