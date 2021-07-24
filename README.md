@@ -1,5 +1,5 @@
 # tech-blog
-creates user profile &amp; captures blog events
+creates user profile. captures blog and comment events
 
 ## Table of Contents
 
@@ -16,9 +16,9 @@ creates user profile &amp; captures blog events
 
   What is this app and what does it do:
 
-  This app is designed for a user who placeholder.
+  This app is designed for a user who wants to a capture a user's signup/login information when they desire to post a blog or leave comments on a blog.
   
-  Technologies used: VSC, Javascript, Node, MySQL, mysql2, sequelize, express, dotenv, and placeholder.
+  Technologies used: VSC, Javascript, Node, MySQL, mysql2, sequelize, express, dotenv, etc (all relevent MVC npm packages; see package.json file for complete list).
 
   * To see the app in action, check out the deployed app on Heroku here >> 
 
@@ -31,7 +31,7 @@ creates user profile &amp; captures blog events
 
   Here's the essentials for what you need to know to use this app: 
 
-  Placeholder.
+  Once the user hits the landing page, she/he sees the option to go to a dashboard page, log in page, or view the current blogs on the Tech Blog. When the user clicks on a blog, they're able to view the individual blog and leave a comment. If the user has not signed up or logged in, she/he can do so by entering their name, email, and a password. Once they log in, the user can start creating, updating, and deleting blogs. Once the user is satisfied with their blog portfolio they can terminate the session and leave the page. The user is then able to return at any time to start a fresh new blog. 
 
   ## Contributing
 
@@ -55,35 +55,25 @@ creates user profile &amp; captures blog events
 
   * homepage
 
-  ![](./assets/hw14-1.png)
+  ![](./images/hw14-1.png)
 
-   * placeholder
+   * one blog w/comment option
 
-  ![](./assets/hw14-2.png)
+  ![](./images/hw14-2.png)
 
-   * placeholder
+   * sign up option
 
-  ![](./assets/hw14-3.png)
+  ![](./images/hw14-3.png)
 
-  * placeholder
+  * created page for user
 
-  ![](./assets/hw14-4.png)
+  ![](./images/hw14-4.png)
 
-  * placeholder
+  * log in option
 
-  ![](./assets/hw14-5.png)
+  ![](./images/hw14-5.png)
 
-  * placeholder
+  * user's dashboard w/blogs
 
-  ![](./assets/hw14-6.png)
-
-  * placeholder
-
-  ![](./assetss/hw14-7.png)
-
-   * placeholder
-
-  ![](./assets/hw14-8.png)
-
-
+  ![](./images/hw14-6.png)
 
