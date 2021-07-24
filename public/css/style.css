@@ -6,10 +6,6 @@ header, .blog:not(:last-child) {
   height: 130px;
 }
 
-#tech-blog-title {
-  margin-bottom: -30px;
-}
-
 a {
   color: blue
 }
@@ -26,7 +22,6 @@ button:hover {
 .no-button {
   background: none;
   border: none;
-  padding: 0;
   cursor: pointer;
   color: blue;
   text-decoration: none;
@@ -77,4 +72,18 @@ button:hover {
 .comment-message {
   margin-top: 100px;
 }
+
+/* screen adjusters (based off 13" max diameter screen size) */
+@media screen and (max-width: 660px) {
+  .dashboard-link{
+    display: block;
+    margin-top: 40px;
+  }
+} 
+
+
+
+
+
+
 
