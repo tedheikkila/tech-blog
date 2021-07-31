@@ -4,7 +4,6 @@ const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
   try {
-    // Get all blogs and JOIN with user data
     const blogData = await Blog.findAll({
       where: {
         user_id: req.session.user_id
@@ -21,10 +20,8 @@ router.get('/', withAuth, async (req, res) => {
       ],
     });
 
-    // Serialize data so the template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
     res.render('dashboard', { 
       blogs, 
       logged_in: true 

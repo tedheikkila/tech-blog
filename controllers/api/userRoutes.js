@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const { User, Post, Comment, Blog } = require('../../models');
+const { User, Comment, Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // gets /api/users
 router.get('/', (req, res) => {
-  // find User model and run findAll
   User.findAll({
       attributes: { exclude: ['password'] }
   })
@@ -55,7 +54,7 @@ router.post('/', (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.name = userData.name;
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
   
       res.json(userData);
     });
@@ -84,7 +83,7 @@ router.post('/login', (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.name = userData.name;
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
 
       res.json({ user: userData, message: 'You are now logged in' });
     });
@@ -93,7 +92,7 @@ router.post('/login', (req, res) => {
 
 
 router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });
@@ -124,7 +123,7 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
-// dete /api/users/id
+// delete /api/users/id
 router.delete('/:id', withAuth, (req, res) => {
   User.destroy({
     where: {
