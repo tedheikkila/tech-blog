@@ -41,7 +41,7 @@ async function getEditBlog(event) {
 
   const id = event.target.attributes[2].value;;
  
-  const response = await fetch(`/dashboard/edit/${id}`, {
+  const response = await fetch(`/api/blogs/${id}`, {
     method: 'GET',
     credentials: 'include',
     headers: {
@@ -50,7 +50,7 @@ async function getEditBlog(event) {
   });
 
   if (response.ok) {
-    // document.location.replace('/edit-blog');
+    document.location.replace('/edit-blog');
   } else {
     alert(response.statusText);
   }
