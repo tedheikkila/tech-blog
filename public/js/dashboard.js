@@ -72,25 +72,25 @@ document.querySelector('#update-blog-btn').addEventListener('click', editBlog);
 
 // delete/destroy blog function
 
-async function deleteBlog(event) {
-  event.preventDefault();
+const deleteBlog = async (event) => {
+  try {
+    const id = event.target.attributes[2].value;;
 
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
-
-    const response = await fetch(`/api/blog/${id}`, {
-      credentials: 'include',
+    const response = await fetch(`/api/blogs/${id}`, {
       method: 'DELETE',
     });
 
     if (response.ok) {
       document.location.replace('/dashboard');
-    } 
-    
-    else {
+    } else {
       alert('Failed to delete blog');
     }
+
+  } catch (error) {
+    console.log(error)
   }
 }
 
-document.querySelector('#delete-blog-btn').addEventListener('click', deleteBlog);
+// document.querySelector('#delete-blog-btn').addEventListener('click', deleteBlog);
+
+$('#blog-container').on('click', '#delete-blog-btn', deleteBlog)

@@ -28,15 +28,11 @@
     <h3>Current Blogs:</h3>
 
     {{#each blogs as |blog|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
+      <div class="col-md-8" id="blog-container">
         <h4><a href="/blog/{{blog.id}}" class="dashboard-blogs">{{blog.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
         <button class="btn btn-sm btn-success" id="update-blog-btn" data-id="{{blog.id}}">UPDATE</button>
         <button class="btn btn-sm btn-danger" id="delete-blog-btn" data-id="{{blog.id}}">DELETE</button>
       </div>
-    </div>
     {{/each}}
   </div>
   {{/if}}

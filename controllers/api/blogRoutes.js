@@ -87,23 +87,22 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+// delete one blog by its `id`
+router.delete('/:id', withAuth, async (req, res) => {
   try {
-    await Blog.destroy({
+    const blogData = await Blog.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
       },
-    })
-    
-    .then(blogData => {
-      if(!blogData) {
-        res.status(404).json({message: "No blog found with that id"})
-        return
-      }
-      res.json(blogData)
-  
-    })
+    });
+
+    if (!blogData) {
+      res.status(404).json({ message: 'No blog found with that id' });
+      return;
+    }
+
+    res.status(200).json(blogData);
   } catch (err) {
     res.status(500).json(err);
   }
