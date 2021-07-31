@@ -34,40 +34,62 @@ async function createBlog(event) {
 document.querySelector('.new-blog-form').addEventListener('submit', createBlog);
 
 
-// edit/update/put blog function
 
-async function editBlog(event) {
+// get a previous blog to edit it
+async function getEditBlog(event) {
   event.preventDefault();
 
-  let inputName = document.querySelector('#blog-name')
-  let inputDesc = document.querySelector('#blog-description')
-
-  const name = inputName.value;
-  const description = inputDesc.value;
-  // const id = window.location.toString().split('/')[
-  //     window.location.toString().split('/').length - 1
-  //   ];
-
-  const response = await fetch(`/api/blogs/${id}`, {
-    method: 'PUT',
+  const id = event.target.attributes[2].value;;
+ 
+  const response = await fetch(`/dashboard/edit/${id}`, {
+    method: 'GET',
     credentials: 'include',
-    body: JSON.stringify({
-      name,
-      description
-    }),
     headers: {
       'Content-Type': 'application/json'
     }
   });
 
   if (response.ok) {
-    document.location.replace('/dashboard');
+    // document.location.replace('/edit-blog');
   } else {
     alert(response.statusText);
   }
 }
 
-document.querySelector('#update-blog-btn').addEventListener('click', editBlog);
+$('#blog-container').on('click', '#update-blog-btn', getEditBlog)
+
+
+// edit/update/put blog function
+// async function editBlog(event) {
+//   event.preventDefault();
+
+//   let inputName = document.querySelector('#blog-name')
+//   let inputDesc = document.querySelector('#blog-description')
+
+//   const id = event.target.attributes[2].value;;
+//   const name = inputName.value;
+//   const description = inputDesc.value;
+
+//   const response = await fetch(`/api/blogs/${id}`, {
+//     method: 'PUT',
+//     credentials: 'include',
+//     body: JSON.stringify({
+//       name,
+//       description
+//     }),
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   });
+
+//   if (response.ok) {
+//     document.location.replace('/dashboard');
+//   } else {
+//     alert(response.statusText);
+//   }
+// }
+
+// $('#blog-container').on('click', '#update-blog-btn', editBlog)
 
 
 // delete/destroy blog function
@@ -90,7 +112,5 @@ const deleteBlog = async (event) => {
     console.log(error)
   }
 }
-
-// document.querySelector('#delete-blog-btn').addEventListener('click', deleteBlog);
 
 $('#blog-container').on('click', '#delete-blog-btn', deleteBlog)
