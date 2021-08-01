@@ -16,7 +16,7 @@ creates user profile. captures blog and comment events
 
   What is this app and what does it do:
 
-  This app is designed for a user who wants to a capture a user's signup/login information when they desire to post, edit, or delete a blog and/or leave comments on pre-existing blogs.
+  This app is designed for a user who wants to post, edit, or delete a blog and/or leave comments on pre-existing blogs. These features are contingent upon signing up to Tech Blog.
   
   Technologies used: Javascript, Node, MySQL, mysql2, sequelize, express, dotenv, etc (all relevent MVC npm packages; see package.json file for complete list).
 
@@ -33,7 +33,7 @@ creates user profile. captures blog and comment events
 
   Here's the essentials for what you need to know to use this app: 
 
-  Once the user hits the landing page, she/he sees the option to go to a dashboard page, log in page, or view the current blogs on the Tech Blog. When the user clicks on a blog, they're able to view the individual blog and if logged in they can leave a comment. If the user has not signed up or logged in, she/he can do so by entering their name, email, and a password. Once they log in, the user can start creating, updating, and deleting blogs. Once the user is satisfied with their blog portfolio they can terminate the session and leave the page. The user is then able to return at any time to start a fresh new blog. 
+  Once the user hits the landing page, she/he sees the option to go to a dashboard page, log in page, or view the current blogs on the Tech Blog. When the user clicks on a blog, they're able to view the individual blog and if logged in they can leave a comment. If the user has not signed up or logged in, she/he can do so by entering their name, email, and a password. Once they log in, the user can start creating, updating, and deleting blogs. Once the user is satisfied with their blog portfolio they can terminate the session and leave the page. The user is then able to return at any time, log in, and to start a fresh new blog. 
 
   ## Contributing
 
