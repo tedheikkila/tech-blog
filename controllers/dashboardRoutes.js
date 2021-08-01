@@ -35,6 +35,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
       where: {
+        user_id: req.session.user_id,
         id: req.params.id
       },
     

@@ -34,14 +34,13 @@ async function createBlog(event) {
 document.querySelector('.new-blog-form').addEventListener('submit', createBlog);
 
 
-
 // get a previous blog to edit it
 async function getEditBlog(event) {
   event.preventDefault();
 
-  const id = event.target.attributes[2].value;;
+  const id = event.target.attributes[2].value;
  
-  const response = await fetch(`/api/blogs/${id}`, {
+  const response = await fetch(`/api/blogs/edit/${id}`, {
     method: 'GET',
     credentials: 'include',
     headers: {

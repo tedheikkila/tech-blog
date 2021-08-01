@@ -2,9 +2,11 @@ const router = require('express').Router();
 const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// api/blogs/
+
+// get all blogs
 router.get('/', async (req, res) => {
   try {
-    // Get all blogs and JOIN with user data
     await Blog.findAll({
       order: [['date_created', 'DESC']],
       include: [
@@ -25,20 +27,19 @@ router.get('/', async (req, res) => {
   }
 });
 
+// get one blog by ID
 router.get('/:id', async (req, res) => {
   try {
-    await Blog.findByPk(req.params.id, {
+    await Blog.findOne(req.params.id, {
       where: {
         id: req.params.id
       },
       include: [
         {
           model: User,
-          attributes: ['name'],
         },
         {
           model: Comment,
-          attributes: ['name'],
         }
       ],
     }).then(blogData => {
@@ -49,12 +50,39 @@ router.get('/:id', async (req, res) => {
       res.json(blogData)
   
     })
+  } catch (err) {
+    res.status(500).json(err);
+  } 
+});
+
+// get one blog by ID to edit
+router.get('/edit/:id', withAuth, async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      where: {
+        user_id: req.session.user_id,
+        id: req.params.id
+      },
     
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Comment,
+        }
+      ],
+    });
+
+    const blog = blogData.get({ plain: true });
+
+    res.render('edit-blog', {
+      ...blog,
+      logged_in: true
+    });
   } catch (err) {
     res.status(500).json(err);
   }
-
-    
 });
 
 router.post('/', withAuth, async (req, res) => {
