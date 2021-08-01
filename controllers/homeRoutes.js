@@ -59,11 +59,11 @@ router.get('/blog/:id', async (req, res) => {
       ],
     });
 
-    const comment = commentData.map((comment) => comment.get({ plain: true }));
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
 
     res.render('blog', {
       ...blog,
-      comment,
+      comments,
       logged_in: req.session.logged_in
     });
   } catch (err) {

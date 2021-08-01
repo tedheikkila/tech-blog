@@ -7,23 +7,20 @@
   <form class="comment-form">
     <div="input-group">
       <textarea class="comment-text"></textarea>
-    </div>
-    <button class="btn btn-primary" type="submit" id="submit-comment" data-id ="{{id}}">Submit comment</button>
-  </form>
-  {{else}}
-  <p class="comment-message">Log in to comment on blog</p>
-  {{/if}}
+</div>
+<button class="btn btn-primary" type="submit" id="submit-comment" data-id="{{id}}">Submit comment</button>
+</form>
+{{else}}
+<p class="comment-message">Log in to comment on blog</p>
+{{/if}}
 </div>
 
-  <h5 id="comment-header">Comments</h5>
-    {{comment}}
-    
-    {{#each comments as |comment| }}
-
-      <p>{{comment.id}}</p>
-      <p>{{comment.description}}</p>
-      <p>Posted by {{comment.user_id}} on {{format_date comment.date_created}}</p>
-
-    {{/each}}
+<h5 id="comment-header">Comments</h5>
+{{#each comments as |comment| }}
+<div class="comment-body">
+  <p>{{comment.description}}</p>
+  <p>Posted by {{comment.user.name}} on {{format_date comment.date_created}}</p>
+</div>
+{{/each}}
 
 <script src="../js/blog.js"></script>

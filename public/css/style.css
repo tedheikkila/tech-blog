@@ -37,6 +37,10 @@ button:hover {
   text-align: center;
 }
 
+.comment-body {
+  text-align: center;
+}
+
 #comment-header {
   text-align: center;
   margin-top: 20px;
