@@ -1,25 +1,27 @@
-<div>
-  <a href="/dashboard" class="is-pulled-right"> &larr; Return to Dashboard</a>
-  <h2 class="title mt-5">Edit Blog</h2><hr>
-  <form class="edit-blog-form">
-    <div>
-        <label for="blog-title">Blog Name:</label>
-      <input class="input" name="blog-name" type="text" value="{{blog.name}}" />
+<div class="row">
+    <div class="col-auto">
+        <h2>Welcome, {{user.name}}!</h2>
     </div>
-    <div>
-        <label for="blog-description">Blog Description:</label>
-      <input class="textarea" name="blog-description" type="text" value="{{blog.description}}" />
-    </div>
-    <div class="is-pulled-right">
-       Created on {{format_date blog.date_created}}
-      |
-      <a href="/blog/{{blog.id}}">{{blog.comments.length}} {{format_plural "comment" blog.comments.length}}</a>
-    </div>
-    <button type="submit" class="button is-success">Update</button>
-    <button type="button" class="button is-danger delete-blog-btn">Delete</button>
-  </form>
 </div>
 
-{{> comments blog.comments}}
+<div class="row mt-4">
+    <div class="col-md-6">
+        <h3>Update Blog:</h3>
 
-<script src="/js/dashboard.js"></script>
+        <form class="form new-post-form" data-id="{{id}}">
+            <div class="form-group">
+                <label for="blog-title">Blog title:</label>
+                <input class="form-input" type="text" id="blog-title" name="blog-title" value={{name}} />
+            </div>
+            <div class="form-group">
+                <label for="blog-content">Content:</label>
+                <textarea class="form-input" id="blog-content" name="blog-content">{{description}}</textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/edit.js"></script>
