@@ -1,15 +1,15 @@
-const editBlog = async (event) => {
+const editThisBlog = async (event) => {
     event.preventDefault();
 
-    const name = document.querySelector('#post-title').value.trim();
-    const description = document.querySelector('#post-content').value.trim();
+    const name = document.querySelector('#blog-name').value.trim();
+    const description = document.querySelector('#blog-description').value.trim();
 
-    if (title && content) {
+    if (name && description) {
         if (event.target.hasAttribute('data-id')) {
             const id = event.target.getAttribute('data-id');
             const response = await fetch(`/api/dashboard/${id}`, {
                 method: 'PUT',
-                body: JSON.stringify({ title, content }),
+                body: JSON.stringify({ name, description }),
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -18,10 +18,10 @@ const editBlog = async (event) => {
             if (response.ok) {
                 document.location.replace('/dashboard');
             } else {
-                alert('Failed to update post');
+                alert('Failed to update blog');
             }
         }
     }
 };
 
-document.querySelector('.edit-blog-form').addEventListener('submit', editBlog);
+document.querySelector('.edit-blog-form').addEventListener('submit', editThisBlog);
