@@ -33,6 +33,20 @@ button:hover {
   margin-top: 50px;
 }
 
+.comment-form {
+  text-align: center;
+}
+
+#comment-header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#submit-comment {
+  margin-left: 45%;
+  margin-right: 45%;
+}
+
 .comment-text {
   width: 500px;
   height: 100px;
