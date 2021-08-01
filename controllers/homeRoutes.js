@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Blog, User, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
@@ -34,9 +35,6 @@ router.get('/blog/:id', async (req, res) => {
         {
           model: User,
           attributes: ['name'],
-        },
-        {
-          model: Comment,
         }
       ],
     });
@@ -52,22 +50,11 @@ router.get('/blog/:id', async (req, res) => {
   }
 });
 
-
-router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('login');
-});
-
-
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Blog }, {model: Comment}],
+      include: [{ model: Blog }],
     });
 
     const user = userData.get({ plain: true });
@@ -80,5 +67,38 @@ router.get('/dashboard', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+router.get('/edit/:id', withAuth, async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const blog = blogData.get({ plain: true });
+
+    res.render('edit', {
+      ...blog,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
+
 
 module.exports = router;

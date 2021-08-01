@@ -10,10 +10,8 @@ async function createBlog(event) {
   const description = inputDesc.value.trim();
 
   if (name && description) {
-
     const response = await fetch(`/api/dashboard`, {
       method: 'POST',
-      credentials: 'include',
       body: JSON.stringify({
         name,
         description
