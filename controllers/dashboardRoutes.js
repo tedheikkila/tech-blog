@@ -22,37 +22,59 @@ router.get('/', withAuth, async (req, res) => {
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    res.render('dashboard', { 
-      blogs, 
-      logged_in: true 
+    res.render('dashboard', {
+      blogs,
+      logged_in: true
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/edit/:id', withAuth, async (req, res) => {
+// update a blog by its `id` value
+router.put('/:id', async (req, res) => {
+  Blog.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(blogData => {
+      if (!blogData[0]) {
+        res.status(404).json({ message: 'No blog found with this id' });
+        return;
+      }
+      res.json(categoryData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+router.get('/edit', withAuth, (req, res) => {
+  
   try {
-    const blogData = await Blog.findByPk(req.params.id, {
+    const blogData = await Blog.findOne({
       where: {
-        user_id: req.session.user_id,
-        id: req.params.id
+        user_id: req.session.user_id
       },
-    
+
       include: [
         {
           model: User,
         },
+
         {
           model: Comment,
         }
       ],
     });
 
-    const blog = blogData.get({ plain: true });
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    res.render('edit-blog', {
-      ...blog,
+    res.render('edit', {
+      blogs,
       logged_in: true
     });
   } catch (err) {
@@ -66,7 +88,7 @@ router.get('/create', withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id
       },
-    
+
       include: [
         {
           model: User,

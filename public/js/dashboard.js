@@ -33,29 +33,15 @@ async function createBlog(event) {
 
 document.querySelector('.new-blog-form').addEventListener('submit', createBlog);
 
-
-// get a previous blog to edit it
+// get page to edit/update/put blog function
 async function getEditBlog(event) {
   event.preventDefault();
 
-  const id = event.target.attributes[2].value;
- 
-  const response = await fetch(`/api/blogs/edit/${id}`, {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-
-  if (response.ok) {
-    document.location.replace('/edit-blog');
-  } else {
-    alert(response.statusText);
-  }
+  document.location.replace('/edit');
 }
 
 $('#blog-container').on('click', '#update-blog-btn', getEditBlog)
+
 
 
 // edit/update/put blog function
@@ -82,7 +68,7 @@ $('#blog-container').on('click', '#update-blog-btn', getEditBlog)
 //   });
 
 //   if (response.ok) {
-//     document.location.replace('/dashboard');
+//     document.location.replace('/edit-blog');
 //   } else {
 //     alert(response.statusText);
 //   }
@@ -92,7 +78,6 @@ $('#blog-container').on('click', '#update-blog-btn', getEditBlog)
 
 
 // delete/destroy blog function
-
 const deleteBlog = async (event) => {
   try {
     const id = event.target.attributes[2].value;;
