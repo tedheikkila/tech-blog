@@ -11,7 +11,7 @@ async function createBlog(event) {
 
   if (name && description) {
 
-    const response = await fetch(`/api/blogs`, {
+    const response = await fetch(`/api/dashboard`, {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify({
@@ -82,7 +82,7 @@ const deleteBlog = async (event) => {
   try {
     const id = event.target.attributes[2].value;;
 
-    const response = await fetch(`/api/blogs/${id}`, {
+    const response = await fetch(`/api/dashboard/${id}`, {
       method: 'DELETE',
     });
 

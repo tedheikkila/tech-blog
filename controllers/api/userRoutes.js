@@ -94,9 +94,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
 // post to destroy session/log out the user
-router.post('/logout', (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -104,47 +103,6 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end();
   }
-});
-
-// put /api/users/id
-router.put('/:id', withAuth, (req, res) => {
-  User.update(req.body, {
-      individualHooks: true,
-      where: {
-          id: req.params.id
-    }
-  })
-    .then(userData => {
-      if (!userData[0]) {
-        res.status(404).json({ message: 'No user found with this id' });
-        return;
-      }
-      res.json(userData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// delete /api/users/id
-router.delete('/:id', withAuth, (req, res) => {
-  User.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(userData => {
-      if (!userData) {
-        res.status(404).json({ message: 'No user found with this id' });
-        return;
-      }
-      res.json(userData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
 });
 
 
