@@ -16,8 +16,8 @@
 </div>
 
   <h5 id="comment-header">Comments</h5>
-  <div class = "comments">
     {{comment}}
+    
     {{#each comments as |comment| }}
 
       <p>{{comment.id}}</p>
@@ -25,6 +25,5 @@
       <p>Posted by {{comment.user_id}} on {{format_date comment.date_created}}</p>
 
     {{/each}}
-  </div>
 
 <script src="../js/blog.js"></script>
