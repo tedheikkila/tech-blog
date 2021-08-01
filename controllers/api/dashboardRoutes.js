@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// gets user's blogs withAuth
 router.get('/', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findAll({
@@ -31,6 +32,7 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+// posts a new blog to dashboard
 router.post('/', withAuth, async (req, res) => {
   try {
     const newBlog = await Blog.create({
@@ -44,6 +46,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+// update an existing blog
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.update(req.body, {
@@ -63,6 +66,7 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
+// deletes an existing blog
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.destroy({
@@ -82,7 +86,6 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 
 module.exports = router;

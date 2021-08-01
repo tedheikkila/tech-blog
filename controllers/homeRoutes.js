@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// route: /
+
+// gets all blogs on homepage
 router.get('/', async (req, res) => {
   try {
     const blogData = await Blog.findAll({
@@ -29,6 +32,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// gets one blog by its id
 router.get('/blog/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -71,7 +75,7 @@ router.get('/blog/:id', async (req, res) => {
   }
 });
 
-
+// gets dashboard withAuth middleware
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
@@ -90,7 +94,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-
+// gets edit page for updating a blog
 router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -112,6 +116,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
   }
 });
 
+// gets login/sign up page
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');

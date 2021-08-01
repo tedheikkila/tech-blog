@@ -4,6 +4,7 @@ const { User, Blog, Comment } = require('../models');
 const userData = require('./userData.json');
 const blogData = require('./blogData.json');
 
+// seeds db techblog_db w/blog and user info
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 

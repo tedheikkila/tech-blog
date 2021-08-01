@@ -1,3 +1,4 @@
+// format_date was used; format_plural was not
 module.exports = {
   format_date: (date) => {
     // Format date as MM/DD/YYYY

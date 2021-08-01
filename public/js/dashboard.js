@@ -1,5 +1,4 @@
 // create/add/post blog function
-
 async function createBlog(event) {
   event.preventDefault();
 
@@ -31,7 +30,7 @@ async function createBlog(event) {
 
 document.querySelector('.new-blog-form').addEventListener('submit', createBlog);
 
-
+// listens for update btn event and changes doc location to edit blog
 const editBlog = (event) => {
   if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
@@ -43,10 +42,10 @@ if(document.querySelector('#update-blog-btn')) {
 document.querySelector('#update-blog-btn').addEventListener('click', editBlog);
 }
 
-
 // delete/destroy blog function
 const deleteBlog = async (event) => {
   try {
+    // finds attribute value via DOM manipulation (practicing new manip methods for data)
     const id = event.target.attributes[2].value;;
 
     const response = await fetch(`/api/dashboard/${id}`, {
@@ -64,4 +63,5 @@ const deleteBlog = async (event) => {
   }
 }
 
+// use jQuery for change of pace/practice
 $('#blog-container').on('click', '#delete-blog-btn', deleteBlog)

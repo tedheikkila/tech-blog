@@ -3,6 +3,7 @@ require('dotenv').config();
 
 let sequelize;
 
+// uses Heroku's JAWSDB as remote db
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {

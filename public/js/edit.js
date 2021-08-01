@@ -1,3 +1,5 @@
+
+// does put method to update selected blog
 const editThisBlog = async (event) => {
     event.preventDefault();
 

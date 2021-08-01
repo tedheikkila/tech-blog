@@ -1,5 +1,5 @@
 
-
+// posts a new comment on blog
 const newComment = async (event) => {
   event.preventDefault();
   const description = document.querySelector('.comment-text').value.trim();

@@ -7,7 +7,6 @@
   <title>Tech Blog</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
-  <!-- jQuery min -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -19,7 +18,6 @@
         <a href="/" id="tech-blog-title">Tech Blog</a>
       </h1>
       <nav class="navbar mt-2">
-        <!-- Conditionally render profile, login, logout links -->
         {{#if logged_in}}
         <button class="no-button" id="logout" class="logout-link">Log Out</button>
         <a href="/dashboard" class="dashboard-link">Dashboard</a>
@@ -30,18 +28,15 @@
       </nav>
     </header>
     <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
+
       {{{ body }}}
+
     </main>
-    <footer>
-      
-    </footer>
   </div>
 
-  <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
-</body>
 
+</body>
 </html>
