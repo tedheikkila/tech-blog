@@ -15,18 +15,16 @@
   {{/if}}
 </div>
 
-  <h3 id="comment-header">Comments</h3>
-  {{#each comments as |comment| }}
-  <div class="row mb-4">
-    <div class="col-md-5">
-      <p>
-        {{comment.description}}
-      </p>
-    </div>
-    <div class="col-md-7">
+  <h5 id="comment-header">Comments</h5>
+  <div class = "comments">
+    {{comment}}
+    {{#each comments as |comment| }}
+
+      <p>{{comment.id}}</p>
+      <p>{{comment.description}}</p>
       <p>Posted by {{comment.user_id}} on {{format_date comment.date_created}}</p>
-    </div>
+
+    {{/each}}
   </div>
-  {{/each}}
 
 <script src="../js/blog.js"></script>

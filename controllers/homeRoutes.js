@@ -35,8 +35,11 @@ router.get('/blog/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
-        }
+          attributes: ['name']
+        },
+        {
+          model: Comment,
+        },
       ],
     });
 
@@ -49,7 +52,9 @@ router.get('/blog/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
+        },
+        {
+          model: Blog,
         },
       ],
     });
@@ -66,11 +71,12 @@ router.get('/blog/:id', async (req, res) => {
   }
 });
 
+
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Blog }, {model: Comment}],
+      include: [{ model: Blog }],
     });
 
     const user = userData.get({ plain: true });
@@ -90,12 +96,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     const blogData = await Blog.findByPk(req.params.id, {
       include: [
         {
-          model: User,
-          attributes: ['name'],
-        },
-        {
-          model: Comment,
-          attributes: ['description'],
+          model: User
         },
       ],
     });
