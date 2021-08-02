@@ -29,6 +29,13 @@ button:hover {
   margin-left: -150px;
 }
 
+.text-center {
+  text-align: center;
+  word-wrap: break-word;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
 .comment-below {
   margin-top: 50px;
 }
@@ -39,6 +46,9 @@ button:hover {
 
 .comment-body {
   text-align: center;
+  word-wrap: break-word;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 #comment-header {
@@ -93,9 +103,10 @@ button:hover {
 
 /* screen adjusters (based off 13" max diameter screen size) */
 @media screen and (max-width: 660px) {
-  .dashboard-link{
+  .dashboard-link, .login-link, .logout-link{
     display: block;
-    margin-top: 40px;
+    margin-top: 30px;
+    font-size: 25px;
   }
 } 
 
